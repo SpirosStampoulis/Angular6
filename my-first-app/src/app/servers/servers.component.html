@@ -1,3 +1,27 @@
-<button class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button>
+<label>Server Name</label>
+<!-- how to use $event -->
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)"> -->
+
+<!-- ngModel Directive Data Binding in both Directions -->
+<input type="text" class="form-control" [(ngModel)]="serverName">
+
+<!-- <p>{{ serverName }}</p> -->
+
+<!--  disabled the property -->
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server
+</button>
+<!-- string Interpolation -->
+<!-- <p>{{allowNewServer}}</p> -->
+
+<!-- Property Binding -->
+<!-- <p [innerText]="allowNewServer"></p> -->
+
+<p>{{serverCreationStatus}}</p>
 <app-server></app-server>
 <app-server></app-server>
+
+<!-- For Two-Way-Binding (covered in the next lecture) to work, you need to enable the ngModel  directive. This is done by adding the FormsModule  to the imports[]  array in the AppModule.
+
+You then also need to add the import from @angular/forms  in the app.module.ts file:
+
+import { FormsModule } from '@angular/forms'; -->
