@@ -16,9 +16,20 @@
 <!-- Property Binding -->
 <!-- <p [innerText]="allowNewServer"></p> -->
 
-<p>{{serverCreationStatus}}</p>
-<app-server></app-server>
-<app-server></app-server>
+<!-- <p>{{serverCreationStatus}}</p> -->
+
+<!-- Add directive ngIf * because is a structural Directive -->
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+
+<!-- ngIf with else -->
+<!-- <p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p> -->
+
+
+<!-- Local reference -->
+<!-- <ng-template #noServer><p>No server was created!</p></ng-template> -->
+
+<app-server *ngFor="let server of servers"></app-server>
+<!-- <app-server></app-server> -->
 
 <!-- For Two-Way-Binding (covered in the next lecture) to work, you need to enable the ngModel  directive. This is done by adding the FormsModule  to the imports[]  array in the AppModule.
 
