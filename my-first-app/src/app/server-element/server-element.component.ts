@@ -1,3 +1,4 @@
+import { ElementRef } from '@angular/core';
 import { Component,
    OnInit,
    Input,
@@ -9,7 +10,8 @@ import { Component,
    AfterContentChecked,
    AfterViewInit,
    AfterViewChecked,
-   OnDestroy} from '@angular/core';
+   OnDestroy,
+   ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -24,6 +26,7 @@ export class ServerElementComponent implements OnInit,
   // Decorator so we can bind it outside of component alias:srvElement
   @Input() element: {type: string, name: string, content: string};
   @Input() name: string;
+  @ViewChild('heading') header: ElementRef;
 
   constructor() {
     console.log('constructor called!');
@@ -41,6 +44,8 @@ export class ServerElementComponent implements OnInit,
   // lifecycle
   ngAfterViewInit() {
     console.log('ngAfterViewInit called!');
+    console.log('Text Content' + this.header.nativeElement.textContent);
+
   }
 
    // lifecycle
@@ -65,6 +70,7 @@ export class ServerElementComponent implements OnInit,
   // lifecycle
   ngOnInit() {
     console.log('ngOnInit called!');
+    console.log('Text Content' + this.header.nativeElement.textContent);
   }
 
 }
