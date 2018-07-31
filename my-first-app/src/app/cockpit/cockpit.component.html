@@ -12,7 +12,12 @@
     >
 
     <label>Server Content</label>
-    <input type="text" class="form-control" [(ngModel)]="newServerContent">
+    <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent"> -->
+
+    <input type="text"
+    class="form-control"
+    #serverContentInput>
+
     <br>
      <!-- local reference -->
     <button
