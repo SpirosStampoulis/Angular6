@@ -35,4 +35,6 @@ export class CockpitComponent implements OnInit {
       // local reference through viewChild
       serverContent: this.serverContentInput.nativeElement.value});
   }
+
+
 }
