@@ -3,9 +3,11 @@
         >
         <div class="panel-heading">{{ element.name }}</div>
         <div class="panel-body">
-          <p>
+          <!-- we are using this on opening and closing tags -->
+          <ng-content></ng-content>
+          <!-- <p>
             <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
             <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
-          </p>
+          </p> -->
         </div>
       </div>
