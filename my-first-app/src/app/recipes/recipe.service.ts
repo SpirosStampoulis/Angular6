@@ -7,10 +7,14 @@ export class RecipeService {
     recipeSelected = new EventEmitter<Recipe>();
     // private to be inside the component
     private recipes: Recipe[] = [
-        new Recipe('A test recipe', 'this is a test',
-        'https://img.bestrecipes.com.au/rZFo7F8i/h300-w400-cscale-1495077669/br-api/asset/20771/super-easy-pizza-dough-recipe.jpg'),
+        // add one more for ingredients[]
+        new Recipe('A test recipe',
+        'this is a test',
+        'https://img.bestrecipes.com.au/rZFo7F8i/h300-w400-cscale-1495077669/br-api/asset/20771/super-easy-pizza-dough-recipe.jpg',
+        [new Ingredient('meat', 1)]),
         new Recipe('Another test recipe', 'this is the second test' ,
-        'https://img.bestrecipes.com.au/rZFo7F8i/h300-w400-cscale-1495077669/br-api/asset/20771/super-easy-pizza-dough-recipe.jpg')
+        'https://img.bestrecipes.com.au/rZFo7F8i/h300-w400-cscale-1495077669/br-api/asset/20771/super-easy-pizza-dough-recipe.jpg',
+        [new Ingredient('meat', 10)])
       ];
 
       // to return this array
