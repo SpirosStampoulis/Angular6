@@ -17,4 +17,15 @@ export class ShoppingListService {
         // to get our original ingredient
         this.ingredientChanged.emit(this.ingredients.slice());
     }
+
+    addIngredients(ingredients: Ingredient[]) {
+    //     for (let ingredient of ingredients) {
+    //         this.addIngredient(ingredient);
+    //     }
+    // array of elements to list of elements sread operator ...
+    this.ingredients.push(...ingredients);
+    // need to emit so we need a copy
+    this.ingredientChanged.emit(this.ingredients.slice());
+
+    }
 }

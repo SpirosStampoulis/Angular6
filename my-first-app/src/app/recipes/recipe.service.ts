@@ -1,6 +1,10 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
+
+// inject service in to the service
+@Injectable()
 
 // because also service is a typescript class
 export class RecipeService {
@@ -17,10 +21,15 @@ export class RecipeService {
         [new Ingredient('meat', 10)])
       ];
 
+      constructor(private slService: ShoppingListService) { }
+
       // to return this array
       getRecipes() {
           // get access from outside slice to get a copy for the array
         return this.recipes.slice();
     }
 
+    addIngrediensToShoppingList(ingredients: Ingredient[]) {
+        this.slService.addIngredients(ingredients);
+    }
 }
