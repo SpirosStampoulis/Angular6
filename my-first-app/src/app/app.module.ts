@@ -20,6 +20,7 @@ import { LoggingService } from './logging.service';
     FormsModule,
     HttpModule
   ],
+  // the highest hierchical is the model to providers, So here the servieces woriking in the whole app
   providers: [AccountsService, LoggingService],
   bootstrap: [AppComponent]
 })
