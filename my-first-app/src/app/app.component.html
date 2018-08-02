@@ -4,6 +4,7 @@
       <ul class="nav nav-tabs">
         <!-- with href reload the page but wwith RouterLInk Directive not-->
         <li role="presentation" class="active"><a routerLink="/">Home</a></li>
+        <!-- with / absolute path without / or ./ relative path -->
         <li role="presentation"><a routerLink="/servers">Servers</a></li>
         <!-- preoperty binding because users would be invalid name in javascript -->
         <li role="presentation"><a [routerLink]="['/users']">Users</a></li>
