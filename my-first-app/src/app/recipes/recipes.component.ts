@@ -11,10 +11,18 @@ import { RecipeService } from './recipe.service';
 })
 export class RecipesComponent implements OnInit {
   selectedRecipe: Recipe;
-
-  constructor() { }
+  // all recipe component use the same instance
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+    // to setup my listener
+    this.recipeService.recipeSelected.subscribe(
+      // argument list
+      (recipe: Recipe) => {
+        // to get the same recipe from event
+        this.selectedRecipe = recipe;
+      }
+    );
   }
 
 }
