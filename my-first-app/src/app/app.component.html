@@ -3,11 +3,23 @@
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
         <!-- with href reload the page but wwith RouterLInk Directive not-->
-        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
+        <!-- routerLinkActiveOptions for not be active the home route because / is on all routes -->
+        <!-- if exact the full path is / -->
+        <li role="presentation" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/" >Home</a>
+      </li>
         <!-- with / absolute path without / or ./ relative path -->
-        <li role="presentation"><a routerLink="/servers">Servers</a></li>
+        <li role="presentation"
+         routerLinkActive="active">
+         <a routerLink="/servers">Servers</a>
+        </li>
         <!-- preoperty binding because users would be invalid name in javascript -->
-        <li role="presentation"><a [routerLink]="['/users']">Users</a></li>
+        <li role="presentation" 
+        routerLinkActive="active">
+        <a [routerLink]="['/users']">Users</a>
+      </li>
       </ul>
     </div>
   </div>
