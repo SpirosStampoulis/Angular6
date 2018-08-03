@@ -17,6 +17,6 @@ export class ServersComponent implements OnInit {
   }
   onReload() {
     // navigate method dont know in whuch route we are anf router knows in which compoent is
-    this.router.navigate(['/servers'], {relativeTo: this.route});
+    // this.router.navigate(['/servers'], {relativeTo: this.route});
   }
 }
