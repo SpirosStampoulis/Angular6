@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -18,5 +18,15 @@ export class UserComponent implements OnInit {
     id: this.route.snapshot.params['id'],
     name: this.route.snapshot.params['name']
   };
+  // params are observable and help us with asynchronus tasks
+  // and subscribe can take 3 functions
+  // and now when we click load change also the id and the name on html
+  this.route.params
+  .subscribe(
+    (params: Params) => {
+      this.user.id = params['id'];
+      this.user.name = params['name'];
+    }
+  );
  }
 }
