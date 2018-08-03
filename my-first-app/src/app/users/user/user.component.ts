@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
-  user: {id: number, name: string};
 
+// onDestroy when we use subscription to free meory when we change page
+export class UserComponent implements OnInit, OnDestroy {
+  user: {id: number, name: string};
+  paramsSubscription: Subscription;
   // inject the active route
   constructor(public route: ActivatedRoute) { }
 
@@ -29,4 +32,8 @@ export class UserComponent implements OnInit {
     }
   );
  }
+
+ngOnDestroy() {
+  this.paramsSubscription.unsubscribe();
+}
 }
