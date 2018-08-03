@@ -7,6 +7,8 @@ import { UserComponent } from './users/user/user.component';
 import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth-guard.service';
+
 
 // create routes with children
 // ** catch all paths and this one should be the last one
@@ -15,7 +17,11 @@ const appRoutes: Routes = [
     { path: 'users', component: UsersComponent, children: [
       { path: ':id/:name', component: UserComponent}
     ]},
-    { path: 'servers', component: ServersComponent, children: [
+    { path: 'servers',
+    // canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    component: ServersComponent,
+    children: [
     { path: ':id', component: ServerComponent},
     { path: ':id/edit', component: EditServerComponent}
     ] },
