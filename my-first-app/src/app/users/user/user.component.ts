@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+// import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -9,9 +9,10 @@ import { Subscription } from 'rxjs/Subscription';
 })
 
 // onDestroy when we use subscription to free meory when we change page
-export class UserComponent implements OnInit, OnDestroy {
+export class UserComponent implements OnInit {
   user: {id: number, name: string};
-  paramsSubscription: Subscription;
+  // its not working maybe because of the version of ang6 OnInit , OnDestroy
+  // paramsSubscription: Subscription;
   // inject the active route
   constructor(public route: ActivatedRoute) { }
 
@@ -33,7 +34,8 @@ export class UserComponent implements OnInit, OnDestroy {
   );
  }
 
-ngOnDestroy() {
-  this.paramsSubscription.unsubscribe();
-}
+// tslint:disable-next-line:use-life-cycle-interface
+  // ngOnDestroy() {
+  //    this.paramsSubscription.unsubscribe();
+  // }
 }
