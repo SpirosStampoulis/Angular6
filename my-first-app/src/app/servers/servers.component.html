@@ -6,8 +6,8 @@
       <!-- queryParams create ?allowEdit=1 -->
       <!-- fragment will have #loading -->
       <a
-        [routerLink]="['/servers', 5, 'edit']"
-        [queryParams]="{allowEdit: '1'}"
+      [routerLink]="['/servers', server.id]"
+      [queryParams]="{allowEdit: '1'}"
         fragment="loading"
         href="#"
         class="list-group-item"
@@ -20,7 +20,7 @@
     <button class="btn btn-primary" (click)=onReload()>Reload</button>
     <app-edit-server></app-edit-server>
     <hr>
-    <app-server></app-server>
+    <!-- <app-server></app-server> -->
   </div>
 </div>
 
