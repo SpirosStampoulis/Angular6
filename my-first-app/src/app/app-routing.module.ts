@@ -34,8 +34,11 @@ const appRoutes: Routes = [
   ];
 
 @NgModule({
+    // we are using hash if we have problem with the real server with routing
     imports: [
+        // RouterModule.forRoot(appRoutes, {useHash: true})
         RouterModule.forRoot(appRoutes)
+
     ],
     exports: [RouterModule]
 })
