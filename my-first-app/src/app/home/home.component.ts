@@ -19,11 +19,11 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/servers', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment: 'loading'});
   }
 
-  onlogin() {
+  onLogin() {
     this.authService.login();
   }
 
-  onlogout() {
+  onLogout() {
     this.authService.logout();
   }
 
