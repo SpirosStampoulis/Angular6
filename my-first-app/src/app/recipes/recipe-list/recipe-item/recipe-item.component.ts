@@ -10,8 +10,8 @@ import { Recipe } from '../../recipe.model';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
-
-  // inject recipe service
+  @Input() index: number;
+   // inject recipe service
   // constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
