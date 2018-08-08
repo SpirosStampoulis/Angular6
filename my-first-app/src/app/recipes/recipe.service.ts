@@ -1,4 +1,5 @@
-import { EventEmitter, Injectable } from '@angular/core';
+// import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
@@ -8,7 +9,8 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 // because also service is a typescript class
 export class RecipeService {
-    recipeSelected = new EventEmitter<Recipe>();
+    // we dont use it anymore
+    // recipeSelected = new EventEmitter<Recipe>();
     // private to be inside the component
     private recipes: Recipe[] = [
         // add one more for ingredients[]

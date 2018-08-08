@@ -1,8 +1,13 @@
 import { Ingredient } from '../shared/ingredient.model';
-import { EventEmitter } from '@angular/core';
+// we can remove it
+// import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
 export class ShoppingListService {
-    ingredientChanged = new EventEmitter<Ingredient[]>();
+    // ingredientChanged = new EventEmitter<Ingredient[]>();
+    // better to use subject
+    ingredientChanged = new Subject<Ingredient[]>();
+
     private ingredients: Ingredient[] = [
         new Ingredient('Apples', 5),
         new Ingredient('Tomatoes', 10),
@@ -15,7 +20,10 @@ export class ShoppingListService {
       addIngredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
         // to get our original ingredient
-        this.ingredientChanged.emit(this.ingredients.slice());
+        // this.ingredientChanged.emit(this.ingredients.slice());
+        // need to call next insead of emit
+        this.ingredientChanged.next(this.ingredients.slice());
+
     }
 
     addIngredients(ingredients: Ingredient[]) {
@@ -25,7 +33,9 @@ export class ShoppingListService {
     // array of elements to list of elements sread operator ...
     this.ingredients.push(...ingredients);
     // need to emit so we need a copy
-    this.ingredientChanged.emit(this.ingredients.slice());
+    // this.ingredientChanged.emit(this.ingredients.slice());
+    // same here
+    this.ingredientChanged.next(this.ingredients.slice());
 
     }
 }
