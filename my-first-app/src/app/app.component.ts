@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { UsersService } from './users.service';
 
 @Component({
@@ -6,7 +7,7 @@ import { UsersService } from './users.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   user1Activated = false;
   user2Activated = false;
 
@@ -21,7 +22,6 @@ export class AppComponent {
           this.user2Activated = true;
         }
       }
-
     );
   }
 }
