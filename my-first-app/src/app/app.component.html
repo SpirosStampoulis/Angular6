@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <!-- local reference -->
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
         <div id="user-data">
           <div class="form-group">
             <label for="username">Username</label>
@@ -10,7 +10,8 @@
             type="text" 
             id="username" 
             class="form-control"
-            ngModel name="username">
+            ngModel name="username"
+            required>
           </div>
           <button class="btn btn-default" type="button">Suggest an Username</button>
           <div class="form-group">
@@ -19,7 +20,9 @@
             type="email" 
             id="email" 
             class="form-control" 
-            ngModel name="email">
+            ngModel name="email"
+            required
+            email>
           </div>
         </div>
         <div class="form-group">
