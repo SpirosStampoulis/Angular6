@@ -1,3 +1,7 @@
 .container {
   margin-top: 30px;
 }
+/* to be red only input and only when user tries to fill the input */
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
