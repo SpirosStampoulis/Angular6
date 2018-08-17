@@ -13,8 +13,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // here will confugure the form and we ll put the validators and dont use () we dont want to executed we want just the reference
     this.signupForm = new FormGroup({
-      'username': new FormControl(null, Validators.required),
+      // pass the object in the form group and now username and email are nested
+      'userData': new FormGroup({
+       'username': new FormControl(null, Validators.required),
       'email': new FormControl(null, [Validators.required, Validators.email]),
+      }),
       'gender': new FormControl('male')
     });
   }
