@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +11,10 @@ export class AppComponent implements OnInit {
   signupForm: FormGroup;
 
   ngOnInit() {
+    // here will confugure the form and we ll put the validators and dont use () we dont want to executed we want just the reference
     this.signupForm = new FormGroup({
-      'username': new FormControl(null),
-      'email': new FormControl(null),
+      'username': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
       'gender': new FormControl('male')
     });
   }
