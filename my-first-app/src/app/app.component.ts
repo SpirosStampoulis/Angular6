@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { reject } from 'q';
+import { resolve } from 'path';
 
 @Component({
   selector: 'app-root',
@@ -12,40 +15,48 @@ export class AppComponent implements OnInit {
   signupForm: FormGroup;
   forbiddenUsernames = ['Chris', 'Anna'];
 
-  constructor() {}
+  constructor(private forBuilder: FormBuilder) {}
 
   ngOnInit() {
+    // here will confugure the form and we ll put the validators and dont use () we dont want to executed we want just the reference
     this.signupForm = new FormGroup({
+      // pass the object in the form group and now username and email are nested
       'userData': new FormGroup({
-        'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
-        'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails)
+      'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
+      'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails),
       }),
       'gender': new FormControl('male'),
       'hobbies': new FormArray([])
     });
+    // cosnole in every letter we type
     // this.signupForm.valueChanges.subscribe(
     //   (value) => console.log(value)
     // );
     this.signupForm.statusChanges.subscribe(
       (status) => console.log(status)
     );
-    this.signupForm.setValue({
-      'userData': {
-        'username': 'Max',
-        'email': 'max@test.com'
-      },
-      'gender': 'male',
-      'hobbies': []
-    });
+    // set value default
+    // this.signupForm.setValue({
+    //   'userData': {
+    //     'username': 'Max',
+    //     'email': 'max@test.com'
+    //   },
+    //   'gender': 'male',
+    //   'hobbies': []
+    // });
+    // to changepart of form
     this.signupForm.patchValue({
       'userData': {
-        'username': 'Anna',
-      }
+        'username': 'Max',
+      },
     });
+
   }
+
 
   onSubmit() {
     console.log(this.signupForm);
+    // to reset the form after submit
     this.signupForm.reset();
   }
 
@@ -54,6 +65,7 @@ export class AppComponent implements OnInit {
     (<FormArray>this.signupForm.get('hobbies')).push(control);
   }
 
+  // check if thename exist in forbidden names
   forbiddenNames(control: FormControl): {[s: string]: boolean} {
     if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
       return {'nameIsForbidden': true};
@@ -61,9 +73,10 @@ export class AppComponent implements OnInit {
     return null;
   }
 
+  // put asynchronous validators
   forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
     const promise = new Promise<any>((resolve, reject) => {
-      setTimeout(() => {
+      setTimeout( () => {
         if (control.value === 'test@test.com') {
           resolve({'emailIsForbidden': true});
         } else {
